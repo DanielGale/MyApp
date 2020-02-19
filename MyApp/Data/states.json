@@ -1,0 +1,277 @@
+[
+  {
+    "Name": "Alabama",
+    "PostalCode": "AL",
+    "Id": "01"
+  },
+  {
+    "Name": "Alaska",
+    "PostalCode": "AK",
+    "Id": "02"
+  },
+  {
+    "Name": "Arizona",
+    "PostalCode": "AZ",
+    "Id": "04"
+  },
+  {
+    "Name": "Arkansas",
+    "PostalCode": "AR",
+    "Id": "05"
+  },
+  {
+    "Name": "California",
+    "PostalCode": "CA",
+    "Id": "06"
+  },
+  {
+    "Name": "Colorado",
+    "PostalCode": "CO",
+    "Id": "08"
+  },
+  {
+    "Name": "Connecticut",
+    "PostalCode": "CT",
+    "Id": "09"
+  },
+  {
+    "Name": "Delaware",
+    "PostalCode": "DE",
+    "Id": "10"
+  },
+  {
+    "Name": "Florida",
+    "PostalCode": "FL",
+    "Id": "12"
+  },
+  {
+    "Name": "Georgia",
+    "PostalCode": "GA",
+    "Id": "13"
+  },
+  {
+    "Name": "Hawaii",
+    "PostalCode": "HI",
+    "Id": "15"
+  },
+  {
+    "Name": "Idaho",
+    "PostalCode": "ID",
+    "Id": "16"
+  },
+  {
+    "Name": "Illinois",
+    "PostalCode": "IL",
+    "Id": "17"
+  },
+  {
+    "Name": "Indiana",
+    "PostalCode": "IN",
+    "Id": "18"
+  },
+  {
+    "Name": "Iowa",
+    "PostalCode": "IA",
+    "Id": "19"
+  },
+  {
+    "Name": "Kansas",
+    "PostalCode": "KS",
+    "Id": "20"
+  },
+  {
+    "Name": "Kentucky",
+    "PostalCode": "KY",
+    "Id": "21"
+  },
+  {
+    "Name": "Louisiana",
+    "PostalCode": "LA",
+    "Id": "22"
+  },
+  {
+    "Name": "Maine",
+    "PostalCode": "ME",
+    "Id": "23"
+  },
+  {
+    "Name": "Maryland",
+    "PostalCode": "MD",
+    "Id": "24"
+  },
+  {
+    "Name": "Massachusetts",
+    "PostalCode": "MA",
+    "Id": "25"
+  },
+  {
+    "Name": "Michigan",
+    "PostalCode": "MI",
+    "Id": "26"
+  },
+  {
+    "Name": "Minnesota",
+    "PostalCode": "MN",
+    "Id": "27"
+  },
+  {
+    "Name": "Mississippi",
+    "PostalCode": "MS",
+    "Id": "28"
+  },
+  {
+    "Name": "Missouri",
+    "PostalCode": "MO",
+    "Id": "29"
+  },
+  {
+    "Name": "Montana",
+    "PostalCode": "MT",
+    "Id": "30"
+  },
+  {
+    "Name": "Nebraska",
+    "PostalCode": "NE",
+    "Id": "31"
+  },
+  {
+    "Name": "Nevada",
+    "PostalCode": "NV",
+    "Id": "32"
+  },
+  {
+    "Name": "New Hampshire",
+    "PostalCode": "NH",
+    "Id": "33"
+  },
+  {
+    "Name": "New Jersey",
+    "PostalCode": "NJ",
+    "Id": "34"
+  },
+  {
+    "Name": "New Mexico",
+    "PostalCode": "NM",
+    "Id": "35"
+  },
+  {
+    "Name": "New York",
+    "PostalCode": "NY",
+    "Id": "36"
+  },
+  {
+    "Name": "North Carolina",
+    "PostalCode": "NC",
+    "Id": "37"
+  },
+  {
+    "Name": "North Dakota",
+    "PostalCode": "ND",
+    "Id": "38"
+  },
+  {
+    "Name": "Ohio",
+    "PostalCode": "OH",
+    "Id": "39"
+  },
+  {
+    "Name": "Oklahoma",
+    "PostalCode": "OK",
+    "Id": "40"
+  },
+  {
+    "Name": "Oregon",
+    "PostalCode": "OR",
+    "Id": "41"
+  },
+  {
+    "Name": "Pennsylvania",
+    "PostalCode": "PA",
+    "Id": "42"
+  },
+  {
+    "Name": "Rhode Island",
+    "PostalCode": "RI",
+    "Id": "44"
+  },
+  {
+    "Name": "South Carolina",
+    "PostalCode": "SC",
+    "Id": "45"
+  },
+  {
+    "Name": "South Dakota",
+    "PostalCode": "SD",
+    "Id": "46"
+  },
+  {
+    "Name": "Tennessee",
+    "PostalCode": "TN",
+    "Id": "47"
+  },
+  {
+    "Name": "Texas",
+    "PostalCode": "TX",
+    "Id": "48"
+  },
+  {
+    "Name": "Utah",
+    "PostalCode": "UT",
+    "Id": "49"
+  },
+  {
+    "Name": "Vermont",
+    "PostalCode": "VT",
+    "Id": "50"
+  },
+  {
+    "Name": "Virginia",
+    "PostalCode": "VA",
+    "Id": "51"
+  },
+  {
+    "Name": "Washington",
+    "PostalCode": "WA",
+    "Id": "53"
+  },
+  {
+    "Name": "West Virginia",
+    "PostalCode": "WV",
+    "Id": "54"
+  },
+  {
+    "Name": "Wisconsin",
+    "PostalCode": "WI",
+    "Id": "55"
+  },
+  {
+    "Name": "Wyoming",
+    "PostalCode": "WY",
+    "Id": "56"
+  },
+  {
+    "Name": "American Samoa",
+    "PostalCode": "AS",
+    "Id": "60"
+  },
+  {
+    "Name": "Guam",
+    "PostalCode": "GU",
+    "Id": "66"
+  },
+  {
+    "Name": "Northern Mariana Islands",
+    "PostalCode": "MP",
+    "Id": "69"
+  },
+  {
+    "Name": "Puerto Rico",
+    "PostalCode": "PR",
+    "Id": "72"
+  },
+  {
+    "Name": "Virgin Islands",
+    "PostalCode": "VI",
+    "Id": "78"
+  }
+]
