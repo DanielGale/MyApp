@@ -42,6 +42,7 @@ namespace MyApp
             services.AddDbContext<MyAppContext>(o =>
             {
                 o.UseSqlServer(_configuration.GetConnectionString("MyAppDBConnectionString"));
+                //o.EnableSensitiveDataLogging();
             });
 
             services.AddScoped<IMyAppRepository, MyAppRepository>();

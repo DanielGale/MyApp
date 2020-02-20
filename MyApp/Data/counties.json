@@ -15711,27 +15711,7 @@
   },
   {
     "Id": "60010",
-    "Name": "Unknown",
-    "StateId": "60"
-  },
-  {
-    "Id": "60020",
-    "Name": "Manua",
-    "StateId": "60"
-  },
-  {
-    "Id": "60020",
-    "Name": "Ofu",
-    "StateId": "60"
-  },
-  {
-    "Id": "60020",
-    "Name": "Olosega",
-    "StateId": "60"
-  },
-  {
-    "Id": "60050",
-    "Name": "Tutuila",
+    "Name": "HAWAII",
     "StateId": "60"
   },
   {
@@ -15740,7 +15720,7 @@
     "StateId": "66"
   },
   {
-    "Id": "66010",
+    "Id": "66020",
     "Name": "Guam",
     "StateId": "66"
   },
@@ -15760,7 +15740,7 @@
     "StateId": "69"
   },
   {
-    "Id": "69120",
+    "Id": "69130",
     "Name": "Tinian",
     "StateId": "69"
   },

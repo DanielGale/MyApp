@@ -45,14 +45,27 @@ namespace MyApp.API.Data
 
             if (!_context.Counties.Any())
             {
-                var filepath = Path.Combine(_hosting.ContentRootPath, "Data/counties.json");
-                var json = File.ReadAllText(filepath);
-                var counties = JsonConvert.DeserializeObject<IEnumerable<County>>(json);
-                _context.Counties.AddRange(counties);
+                using (var transaction = _context.Database.BeginTransaction())
+                {
+                    var filepath = Path.Combine(_hosting.ContentRootPath, "Data/counties.json");
+                    var json = File.ReadAllText(filepath);
+                    var counties = JsonConvert.DeserializeObject<IEnumerable<County>>(json);
 
-                _context.Database.ExecuteSqlCommand(@"SET IDENTITY_INSERT [dbo].[Counties] ON");
-                _context.SaveChanges();
-                _context.Database.ExecuteSqlCommand(@"SET IDENTITY_INSERT [dbo].[Counties] OFF");
+                    foreach (var state in _context.States)
+                    {
+                        foreach (var county in counties.Where(x => x.StateId == state.Id))
+                        {
+                            state.Counties.Add(county);
+                        }
+
+                    }
+
+                    _context.Database.ExecuteSqlCommand(@"SET IDENTITY_INSERT [dbo].[Counties] ON");
+                    _context.SaveChanges();
+                    _context.Database.ExecuteSqlCommand(@"SET IDENTITY_INSERT [dbo].[Counties] OFF");
+
+                    transaction.Commit();
+                }
             }
         }
     }
