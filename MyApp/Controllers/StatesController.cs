@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MyApp.API.Models;
 using MyApp.API.Services;
@@ -41,6 +42,7 @@ namespace MyApp.API.Controllers
             return Ok(_mapper.Map<IEnumerable<StateWithoutCountiesDto>>(stateEntities));
         }
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public IActionResult GetState(int id, bool includeCounties = false)
         {
             var state = _myAppRepository.GetState(id, includeCounties);
