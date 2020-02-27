@@ -14,12 +14,12 @@ using MyApp.API.Models;
 namespace MyApp.API.Controllers
 {
     [ApiController]
-    [Route("api/account")]
-    public class AccountController : Controller
+    [Route("api/token")]
+    public class TokenController : Controller
     {
         private readonly IConfiguration _configuration;
 
-        public AccountController(IConfiguration configuration)
+        public TokenController(IConfiguration configuration)
         {
             _configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
         }
@@ -56,7 +56,7 @@ namespace MyApp.API.Controllers
                 _configuration["Jwt:Issuer"],
                 _configuration["Jwt:Issuer"],
                 claims,
-                expires: DateTime.Now.AddMinutes(120),
+                expires: DateTime.Now.AddMinutes(15),
                 signingCredentials: credentials
                 );
 
