@@ -24,6 +24,7 @@ namespace MyApp.API.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult GetStates()
         {
             var stateEntities = _myAppRepository.GetStates();
