@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using MyApp.API.Entities;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MyApp.API.Contexts
 {
-    public class MyAppContext : DbContext
+    public class MyAppContext : IdentityDbContext<MyAppUser>
     {
         public DbSet<State> States { get; set; }
         public DbSet<County> Counties { get; set; }

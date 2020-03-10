@@ -9,14 +9,18 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using MyApp.API;
 using MyApp.API.Contexts;
 using MyApp.API.Data;
+using MyApp.API.Entities;
 using MyApp.API.Services;
 
 namespace MyApp
@@ -47,7 +51,9 @@ namespace MyApp
                     o.Filters.Add(new AuthorizeFilter());
                     o.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter());
                 });
+
             services.AddTransient<MyAppSeeder>();
+
 #if DEBUG
             services.AddTransient<IMailService, LocalMailService>();
 #else
@@ -58,6 +64,9 @@ namespace MyApp
                 o.UseSqlServer(_configuration.GetConnectionString("MyAppDBConnectionString"));
                 //o.EnableSensitiveDataLogging();
             });
+             
+            services.AddIdentityCore<MyAppUser>(options => { }).AddEntityFrameworkStores<MyAppContext>();
+            services.AddScoped<IUserStore<MyAppUser>, UserOnlyStore<MyAppUser, MyAppContext>>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(o =>

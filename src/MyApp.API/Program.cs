@@ -67,7 +67,7 @@ namespace MyApp
             using (var scope = scopeFactory.CreateScope())
             {
                 var seeder = scope.ServiceProvider.GetService<MyAppSeeder>();
-                seeder.Seed();
+                seeder.SeedAsync().Wait();
             }
         }
     }
