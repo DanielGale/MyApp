@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 using MyApp.API.Models;
+using Microsoft.AspNetCore.Identity;
+using MyApp.API.Entities;
 
 namespace MyApp.API.Controllers
 {
@@ -18,17 +20,20 @@ namespace MyApp.API.Controllers
     public class TokenController : Controller
     {
         private readonly IConfiguration _configuration;
+        private readonly UserManager<MyAppUser> _userManager;
 
-        public TokenController(IConfiguration configuration)
+        public TokenController(IConfiguration configuration, UserManager<MyAppUser> userManager)
         {
             _configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
+            _userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
         }
+
         [AllowAnonymous]
         [HttpPost]
-        public IActionResult Login([FromBody]UserDto login)
+        public async Task<IActionResult> LoginAsync([FromBody]UserDto login)
         {
             IActionResult response = Unauthorized();
-            var user = AuthenticateUser(login);
+            var user = await AuthenticateUserAsync(login);
 
             if(user != null)
             {
@@ -39,15 +44,15 @@ namespace MyApp.API.Controllers
             return response;
         }
 
-        private string GenerateJSONWebToken(UserDto userInfo)
+        private string GenerateJSONWebToken(MyAppUser userInfo)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
             var claims = new[]
             {
-                new Claim(JwtRegisteredClaimNames.Sub, userInfo.Username),
-                new Claim(JwtRegisteredClaimNames.Email, userInfo.EmailAddress),
+                new Claim(JwtRegisteredClaimNames.Sub, userInfo.UserName),
+                new Claim(JwtRegisteredClaimNames.Email, userInfo.Email),
                 //new Claim(Data"DateOfJoin", userInfo.DateOfJoin.ToString("yyy-MM-dd")),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
@@ -63,16 +68,16 @@ namespace MyApp.API.Controllers
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
-        private UserDto AuthenticateUser(UserDto login)
+        private async Task<MyAppUser> AuthenticateUserAsync(UserDto login)
         {
-            UserDto user = null;
+            var user = await _userManager.FindByNameAsync(login.Username);
 
-            if(login.Username == "Daniel")
+            if(user != null && await _userManager.CheckPasswordAsync(user, login.Password))
             {
-                user = new UserDto { Username = "Daniel G", EmailAddress = "daniel@me.com" };
+                return user;
             }
 
-            return user;
+            return null;
         }
     }
 }

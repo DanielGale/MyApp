@@ -64,8 +64,10 @@ namespace MyApp
                 o.UseSqlServer(_configuration.GetConnectionString("MyAppDBConnectionString"));
                 //o.EnableSensitiveDataLogging();
             });
-             
-            services.AddIdentityCore<MyAppUser>(options => { }).AddEntityFrameworkStores<MyAppContext>();
+
+            services.AddIdentityCore<MyAppUser>(options => { });
+            //.AddEntityFrameworkStores<MyAppContext>();
+            
             services.AddScoped<IUserStore<MyAppUser>, UserOnlyStore<MyAppUser, MyAppContext>>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

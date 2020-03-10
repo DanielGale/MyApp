@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using MyApp.API.Contexts;
 using MyApp.API.Entities;
+using MyApp.API.Models;
 using Newtonsoft.Json;
 
 namespace MyApp.API.Data
@@ -30,22 +31,33 @@ namespace MyApp.API.Data
             //_context.Database.EnsureDeleted();
             _context.Database.EnsureCreated();
 
-            MyAppUser user = await _userManager.FindByEmailAsync("user@myApp.com");
-            if (user == null)
+            if (!_context.Users.Any())
             {
-                user = new MyAppUser
-                {
-                    FirstName = "John",
-                    LastName = "Doe",
-                    Email = "user@myApp.com",
-                    UserName = "user@myApp.com"
-                };
+                var filepath = Path.Combine(_hosting.ContentRootPath, "Data/users.json");
+                var json = File.ReadAllText(filepath);
+                var users = JsonConvert.DeserializeObject<IEnumerable<UserSeedDto>>(json);
 
-                var result = await _userManager.CreateAsync(user, "P@ssw0rd!");
-
-                if (result != IdentityResult.Success)
+                foreach (var seedUser in users)
                 {
-                    throw new InvalidOperationException("Could not create new user in seeder");
+                    MyAppUser myAppUser = await _userManager.FindByEmailAsync(seedUser.UserName);
+
+                    if (myAppUser == null)
+                    {
+                        myAppUser = new MyAppUser
+                        {
+                            FirstName = seedUser.FirstName,
+                            LastName = seedUser.LastName,
+                            Email = seedUser.Email,
+                            UserName = seedUser.UserName
+                        };
+
+                        var result = await _userManager.CreateAsync(myAppUser, seedUser.Password);
+
+                        if (result != IdentityResult.Success)
+                        {
+                            throw new InvalidOperationException("Could not create new user in seeder");
+                        }
+                    }
                 }
             }
 
